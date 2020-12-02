@@ -1,0 +1,16 @@
+<script type="application/javascript" src="https://cdn.jsdelivr.net/gh/XYZ1024-alt/CDN@6.0/Valine.min.js"></script>
+<script type="application/javascript">
+  new Valine({
+    el: '#vlaine-comment',
+    appId: '<%= site.customConfig.valineAppId %>',
+    appKey: '<%= site.customConfig.valineAppKey %>',
+    pageSize: <%= site.customConfig.valinePageSize %>,
+    notify: <%= site.customConfig.valineNotify %>,
+    avatar: '<%= site.customConfig.valineAvatar %>',
+    verify: <%= site.customConfig.valineVerify %>,
+    placeholder: '<%= site.customConfig.valinePlaceholder %>',
+    visitor: <%= site.customConfig.valineVisitor %>,
+    highlight: <%= site.customConfig.valineHighlight %>,
+    recordIP: <%= site.customConfig.valineRecordIp %>,
+  })
+</script>

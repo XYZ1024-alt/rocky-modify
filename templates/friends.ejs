@@ -1,0 +1,82 @@
+<html lang="en">
+  <head>
+    <%- include('./includes/head', { siteTitle: themeConfig.siteName }) %>
+    <meta name="description" content="<%- themeConfig.siteDescription %>" />
+    <!--<link rel="stylesheet" type="text/css" href="<%= site.themeConfig.domain %>/media/css/friends.css">-->
+  </head>
+  <body>
+    <div class="antialiased flex flex-col min-h-screen" id="app">
+      <%- include('./includes/header') %>
+
+      <div class="max-w-4xl w-full mx-auto pt-32">
+
+        <div style="background-color: #ffd602; color: midnightblue; border-radius: 15px;">
+          <div style="padding-left: 10px;">
+            <br>
+          <p>需要添加友链可在下方留言或发邮件至邮箱:<strong>xyz1024@xyz1024.xyz</strong></p>
+            <br>
+            <strong>格式:</strong>
+            <br>
+            <ul>
+              <li>  网站名称:</li>
+              <li>  网站链接:</li>
+              <li>  头像链接:</li>
+            </ul>
+            <br>
+            <strong>要求:</strong>
+            <br>
+            <ul>
+              <li>  需要全HTTPS</li>
+              <li>  不能使用免费域名</li>
+              <li>  没有不良内容，没有指向不良内容的外链</li>
+            </ul>
+            <br>
+          </div>
+        </div>
+
+            <% if (site.customConfig.friends) { %>
+              <% site.customConfig.friends.forEach(function(friend) { %>
+                <div class="friend-box">
+                  <img class="friend-avatar" src="<%= friend.siteLogo %>">
+                  <div class="flink-info">
+                    <a href="<%= friend.siteLink %>" target="_blank"><%= friend.siteName %></a>
+                  </div>
+                </div>
+              <% }); %>
+          <% } %>
+        </article>
+        </div>
+        
+        <div class="max-w-4xl w-full mx-auto pt-32">
+        <% if (typeof commentSetting !== 'undefined' && commentSetting.showComment) { %>
+          <% if (commentSetting.commentPlatform === 'gitalk') { %>
+            <div id="gitalk-container"></div>
+          <% } %>
+  
+          <% if (commentSetting.commentPlatform === 'disqus') { %>
+            <%- include('./includes/disqus') %>
+          <% } %>
+        <% } %>
+  
+        <% if (site.customConfig.openValine) { %>
+          <div id="vlaine-comment"></div>
+        <% } %>
+      </div>
+
+        <%- include('./includes/footer') %>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="<%= site.themeConfig.domain %>/media/scripts/main.js"></script>
+    
+    <% if (site.customConfig.openValine) { %>
+      <%- include('./includes/valine') %>
+    <% } %>
+    <% if (typeof commentSetting !== 'undefined' && commentSetting.showComment) { %>
+      <% if (commentSetting.commentPlatform === 'gitalk') { %>
+        <%- include('./includes/gitalk') %>
+      <% } %>
+    <% } %>
+  </body>
+</html>

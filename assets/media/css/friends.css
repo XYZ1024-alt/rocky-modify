@@ -1,0 +1,34 @@
+.friend-box {
+    border-radius: 15px;
+    min-width: calc(50% - 20px);
+    height: 128px;
+    background-color: #FFD602;
+    float: left;
+    margin-top: 20px;
+    margin-bottom: 12px;
+    margin-right: 17px;
+    transition: .2s;
+}
+
+img.friend-avatar {
+    margin-left: auto;
+    margin-right: auto;
+    height: 64px;
+    width: 64px;
+    border-radius:50%;
+}
+
+.flink-info {
+    text-align: center;
+    padding-top: 15px;
+}
+
+.flink-info a {
+    color: dodgerblue;
+    font-size: 19px;
+}
+
+.friend-box:hover {
+    transform: translate3d(0, -2px, 0);
+    box-shadow: 0 17px 40px 0 #FFD602;
+}
